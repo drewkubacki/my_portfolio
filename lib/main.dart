@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
           title: "Flutter Demo",
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-              brightness: themeService.darkTheme ? Brightness.dark : Brightness.light,
+              brightness:
+                  themeService.darkTheme ? Brightness.dark : Brightness.light,
               seedColor: Colors.indigo,
             ),
           ),

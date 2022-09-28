@@ -10,6 +10,7 @@ class AboutMe extends StatelessWidget {
     return Column(
       children: [
         GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 8,
@@ -28,6 +29,7 @@ class AboutMe extends StatelessWidget {
     return Column(
       children: [
         GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
@@ -143,11 +145,10 @@ class AboutMe extends StatelessWidget {
                       child: Image.asset(
                         'assets/img/headshotImage.jpg',
                         //height: 300,
-                        //width: 300, 
+                        //width: 300,
                         fit: BoxFit.scaleDown,
-                        ),
-                      
                       ),
+                    ),
                   ),
                 ],
               ),
