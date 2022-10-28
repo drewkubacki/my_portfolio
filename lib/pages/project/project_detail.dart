@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
 
 class ProjectDetail extends StatelessWidget {
   final Project project;
-  const ProjectDetail({required this.project, Key? key}) : super(key: key);
+  ProjectDetail({required this.project, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: _launchURL,
+        child: Image.asset("assets/icon/githubIcon.png"),
+        backgroundColor: Colors.white,
+      ),
       body: SafeArea(
         bottom: false,
         child: SizedBox(
@@ -54,18 +60,18 @@ class ProjectDetail extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
                       child: Responsive(
-                        mobile: Image.network(
-                          project.imageUrl,
+                        mobile: Image.asset(
+                          project.image,
                           fit: BoxFit.cover,
                         ),
-                        tablet: Image.network(
-                          project.imageUrl,
+                        tablet: Image.asset(
+                          project.image,
                           fit: BoxFit.cover,
                         ),
                         desktop: SizedBox(
                           height: 350,
-                          child: Image.network(
-                            project.imageUrl,
+                          child: Image.asset(
+                            project.image,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -99,7 +105,7 @@ class ProjectDetail extends StatelessWidget {
                   Text(
                     project.description,
                     style: const TextStyle(
-                      fontSize: 16, 
+                      fontSize: 16,
                       //color: Colors.black
                     ),
                   ),
@@ -110,6 +116,12 @@ class ProjectDetail extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchURL() async {
+    if (!await launchUrl(project.githubUrl)) {
+      throw 'Could not launch $project.githubUrl';
+    }
   }
 }
 
@@ -140,7 +152,7 @@ class HorizontalTechView extends StatelessWidget {
               techList[index],
               style: TextStyle(
                 color: Colors.black,
-                ),
+              ),
             ),
           );
         },

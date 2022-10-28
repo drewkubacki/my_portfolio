@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.2
+  url_launcher: ^6.1.6
   
 
 
@@ -72,6 +73,7 @@ flutter:
     - assets/img/htmlIcon.png
     - assets/img/cssIcon.png
     - assets/img/swiftIcon.png
+    - assets/icon/githubIcon.png
  
 
   # An image asset can refer to one or more resolution-specific "variants", see

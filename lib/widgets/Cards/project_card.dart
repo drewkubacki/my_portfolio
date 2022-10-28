@@ -43,17 +43,17 @@ class ProjectCard extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(15.0),
-                      //border: Border.all(color: Colors.black),
-                      ),
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(15.0),
+                    //border: Border.all(color: Colors.black),
+                  ),
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     project.year.toString(),
                     style: TextStyle(
-                      fontSize: 14, 
+                      fontSize: 14,
                       color: Colors.white,
-                      ),
+                    ),
                   ),
                 ),
               ],
@@ -65,8 +65,8 @@ class ProjectCard extends StatelessWidget {
               tag: project.name,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                  project.imageUrl,
+                child: Image.asset(
+                  project.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -76,7 +76,7 @@ class ProjectCard extends StatelessWidget {
             ),
             Text(
               project.description,
-              maxLines: 3,
+              maxLines: 2,
               style: const TextStyle(
                 fontSize: 14,
                 overflow: TextOverflow.ellipsis,
