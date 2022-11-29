@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: "Flutter Demo",
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              brightness:
-                  themeService.darkTheme ? Brightness.dark : Brightness.light,
-              seedColor: Colors.indigo,
-            ),
-          ),
+              colorScheme: ColorScheme.fromSeed(
+                brightness:
+                    themeService.darkTheme ? Brightness.dark : Brightness.light,
+                seedColor: Colors.indigo,
+              ),
+              fontFamily: 'Roboto'),
           home: HomePage(),
         );
       }),

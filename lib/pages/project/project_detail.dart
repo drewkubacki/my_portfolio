@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/responsive.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
+import '../../services/theme_service.dart';
 
 class ProjectDetail extends StatelessWidget {
   final Project project;
@@ -10,51 +12,57 @@ class ProjectDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final themeService = Provider.of<ThemeService>(context, listen: false);
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: _launchURL,
         child: Image.asset("assets/icon/githubIcon.png"),
         backgroundColor: Colors.white,
       ),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        iconTheme: themeService.darkTheme
+            ? IconThemeData(color: Colors.white)
+            : IconThemeData(color: Colors.black),
+        title: Stack(
+          children: [
+            Text(
+              project.name,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: themeService.darkTheme ? Colors.white : Colors.black),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(15.0)),
+                padding: const EdgeInsets.all(5.0),
+                child: Text(
+                  project.year.toString(),
+                  style: const TextStyle(fontSize: 14, color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: SafeArea(
         bottom: false,
-        child: SizedBox(
-          width: screenSize.width,
-          height: screenSize.height,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: screenSize.width,
+            height: screenSize.height,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    //mainAxisSize: MainAxisSize.min,
-                    children: [
-                      BackButton(onPressed: () => Navigator.pop(context)),
-                      Text(
-                        project.name,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      Spacer(),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(15.0)),
-                        padding: const EdgeInsets.all(5.0),
-                        child: Text(
-                          project.year.toString(),
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
+                  const SizedBox(height: 25),
                   Hero(
                     tag: project.name,
                     child: ClipRRect(
@@ -106,7 +114,6 @@ class ProjectDetail extends StatelessWidget {
                     project.description,
                     style: const TextStyle(
                       fontSize: 16,
-                      //color: Colors.black
                     ),
                   ),
                 ],
