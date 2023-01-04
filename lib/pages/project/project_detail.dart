@@ -7,7 +7,74 @@ import '../../services/theme_service.dart';
 
 class ProjectDetail extends StatelessWidget {
   final Project project;
+
   ProjectDetail({required this.project, Key? key}) : super(key: key);
+
+  Widget desktopBuilder(double width) {
+    return Row(
+      children: [
+        Hero(
+          tag: project.name,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: Responsive(
+              mobile: Image.asset(
+                project.image,
+                fit: BoxFit.cover,
+              ),
+              tablet: Image.asset(
+                project.image,
+                fit: BoxFit.cover,
+              ),
+              desktop: SizedBox(
+                height: 450,
+                child: Image.asset(
+                  project.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: width / 20),
+        Container(
+          width: width / 2.5,
+          child: Text(
+            project.description,
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget mobileTabletBuilder() {
+    return Hero(
+      tag: project.name,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: Responsive(
+          mobile: Image.asset(
+            project.image,
+            fit: BoxFit.cover,
+          ),
+          tablet: Image.asset(
+            project.image,
+            fit: BoxFit.cover,
+          ),
+          desktop: SizedBox(
+            height: 450,
+            child: Image.asset(
+              project.image,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +144,7 @@ class ProjectDetail extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                         desktop: SizedBox(
-                          height: 350,
+                          height: 450,
                           child: Image.asset(
                             project.image,
                             fit: BoxFit.cover,
@@ -92,6 +159,7 @@ class ProjectDetail extends StatelessWidget {
                   const Text(
                     "Technologies",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
                   ),
                   const SizedBox(
                     height: 10,
@@ -110,10 +178,15 @@ class ProjectDetail extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    project.description,
-                    style: const TextStyle(
-                      fontSize: 16,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width >= 1100
+                        ? screenSize.width / 2
+                        : screenSize.width,
+                    child: Text(
+                      project.description,
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ],
@@ -143,6 +216,7 @@ class HorizontalTechView extends StatelessWidget {
       height: 45,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: techList.length,
         itemBuilder: (context, index) {

@@ -21,6 +21,7 @@ List<Project> projects = [
         "Flutter",
         "NoSQL",
         "Firebase",
+        "Stripe",
         "RiverPod",
         "ThemeService"
       ],
@@ -30,18 +31,16 @@ List<Project> projects = [
       githubUrl: Uri.parse('https://github.com/drewkubacki/ecommerce'),
       image: "assets/img/ecommerceBannerImage.jpg"),
   Project(
-      name: "Flutter Project 3",
-      technologiesUsed: ["Pro Create", "Flutter", "Firebase"],
-      year: 2020,
-      description: "This is my description 3",
-      githubUrl: Uri.parse('https://github.com/drewkubacki?tab=repositories'),
+      name: "Tricktionary",
+      technologiesUsed: [
+        "Flutter",
+        "Firebase",
+        "NoSQL",
+        "Riverpod",
+      ],
+      year: 2022,
+      description:
+          "This application is currently in progress and will utilize Google's Firebase services for Database storage. In this application you have the ability to randomly select a trick from a list of tricks. \nI have plans to continue building on this application to track scores and game wins with your friends! \n \nClick the Github button to check out my code!",
+      githubUrl: Uri.parse('https://github.com/drewkubacki/tricktionary'),
       image: "assets/img/budgetTrackingBannerImage.jpg"),
-/*   Project(
-      name: "Flutter Project 4",
-      technologiesUsed: ["Android Studio", "Next.js", "OAuth"],
-      year: 2021,
-      description: "This is my description 1",
-      imageUrl:
-          "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"),
-*/
 ];
