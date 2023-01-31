@@ -38,9 +38,9 @@ List<Project> projects = [
         "NoSQL",
         "Riverpod",
       ],
-      year: 2022,
+      year: 2023,
       description:
           "This application is currently in progress and will utilize Google's Firebase services for Database storage. In this application you have the ability to randomly select a trick from a list of tricks. \nI have plans to continue building on this application to track scores and game wins with your friends! \n \nClick the Github button to check out my code!",
       githubUrl: Uri.parse('https://github.com/drewkubacki/tricktionary'),
-      image: "assets/img/budgetTrackingBannerImage.jpg"),
+      image: "assets/img/tricktionaryBannerImage1.jpg"),
 ];
