@@ -16,7 +16,6 @@ class ProjectCard extends StatelessWidget {
           MaterialPageRoute(builder: (_) => ProjectDetail(project: project))),
       child: Container(
         width: 300,
-        //height: 350,
         margin: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 25.0),
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(

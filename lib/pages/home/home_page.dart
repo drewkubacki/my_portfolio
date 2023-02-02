@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-   Widget desktopBuilder() {
+  Widget desktopBuilder() {
     return Column(
       children: [
         GridView.builder(
@@ -44,30 +44,30 @@ class HomePage extends StatelessWidget {
               return ProjectCard(project: projects[index]);
             })),
       ],
-    ); 
+    );
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
     final themeService = Provider.of<ThemeService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        //title: const Center(child: Text("Flutter Portfolio")),
-        leading: IconButton(
-          onPressed: () {
-            themeService.darkTheme = !themeService.darkTheme;
-          },
-          icon: Icon(themeService.darkTheme ? Icons.sunny : Icons.dark_mode),
+          //title: const Center(child: Text("Flutter Portfolio")),
+          leading: IconButton(
+            onPressed: () {
+              themeService.darkTheme = !themeService.darkTheme;
+            },
+            icon: Icon(themeService.darkTheme ? Icons.sunny : Icons.dark_mode),
           ),
-        actions: [
-          IconButton(onPressed: () {
-            Share.share("Check out Drew's portfolio https://drews-portfolio-9c845.web.app/#/");
-          },
-          icon: Icon(Icons.share),
-          ),
-      ]),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Share.share(
+                    "Check out Drew's portfolio https://drews-portfolio-9c845.web.app/#/");
+              },
+              icon: Icon(Icons.share),
+            ),
+          ]),
       body: SafeArea(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Responsive(
                     mobile: mobileTabletBuilder(350),
-                    tablet: mobileTabletBuilder(450),
+                    tablet: mobileTabletBuilder(350),
                     desktop: desktopBuilder(),
                   ),
                   const SizedBox(height: 20),
