@@ -59,7 +59,7 @@ class AboutMe extends StatelessWidget {
               children: [
                 const SizedBox(height: 10),
                 const Text(
-                  "Hi, I'm Drew Kubacki, an aspiring Flutter Developer with a focus on Hybrid Applications based out of Bloomington, IN. I am a Senior Project Manager turned Developer, looking for my first opportunity to join the industry.",
+                  "Hi, I'm Drew Kubacki, an aspiring Flutter Developer with a focus on Hybrid Applications based out of Bloomington, IN. I am a Senior Project Manager and Developer, looking for opportunities to utilize my growing skillset.",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
                   textAlign: TextAlign.center,
                 ),
@@ -112,7 +112,7 @@ class AboutMe extends StatelessWidget {
                   child: Column(
                     children: [
                       const Text(
-                        "Hi, I'm Drew Kubacki, an aspiring Flutter Developer with a focus on Hybrid Applications based out of Bloomington, IN. I am a Senior Project Manager turned Developer, looking for my first opportunity to join the industry.",
+                        "Hi, I'm Drew Kubacki, an aspiring Flutter Developer with a focus on Hybrid Applications based out of Bloomington, IN. I am a Senior Project Manager and Developer, looking for opportunities to utilize my growing skillset.",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.normal),
                         textAlign: TextAlign.center,
