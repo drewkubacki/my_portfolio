@@ -77,8 +77,8 @@ class AboutMe extends StatelessWidget {
                 languageMobileTabletBuilder(),
                 const SizedBox(height: 30),
                 Container(
-                    width: width / 1.5,
-                    height: height / 2.5,
+                    width: width / 1.2,
+                    height: height / 1.5,
                     margin: EdgeInsets.only(top: 20.0),
                     child: ContactMe()),
               ],
@@ -96,7 +96,7 @@ class AboutMe extends StatelessWidget {
 
     return SizedBox(
       width: width,
-      height: height / 4,
+      height: height / 2.5,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -110,6 +110,23 @@ class AboutMe extends StatelessWidget {
                   width: width / 2,
                   child: Column(
                     children: [
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 15),
+                            color: Colors.black.withOpacity(.1),
+                            blurRadius: 15,
+                          )
+                        ]),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: Image.asset(
+                              'assets/img/LunaAndMe.jpg',
+                              width: width / 6,
+                              fit: BoxFit.fill,
+                            )),
+                      ),
+                      const SizedBox(height: 20),
                       const Text(
                         "Hi, I'm Drew Kubacki, an aspiring Flutter Developer with a focus on Hybrid Applications based out of Bloomington, IN. I am a Senior Project Manager and Developer, looking for opportunities to utilize my growing skillset.",
                         style: TextStyle(
@@ -131,9 +148,10 @@ class AboutMe extends StatelessWidget {
               ],
             ),
             Container(
-                //width: width / 3.5,
-                height: height / 3,
-                margin: EdgeInsets.only(left: 50.0),
+                width: width / 3,
+                height: height / 1.5,
+                constraints: BoxConstraints(maxHeight: 475),
+                margin: EdgeInsets.only(left: 35.0),
                 child: ContactMe()),
           ],
         ),

@@ -33,6 +33,8 @@ dependencies:
     sdk: flutter
   provider: ^6.0.2
   url_launcher: ^6.1.6
+  http: ^0.13.5
+  flutter_email_sender: ^5.2.0
   
 
 

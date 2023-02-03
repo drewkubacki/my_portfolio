@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/project.dart';
 import '../../pages/project/project_detail.dart';
-import '../../pages/project/revised_project_detail.dart';
 import '../../services/theme_service.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -13,10 +12,8 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => RevisedProjectDetail(project: project))),
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (_) => ProjectDetail(project: project))),
       child: Container(
         width: 300,
         margin: const EdgeInsets.only(right: 25.0, bottom: 30.0),

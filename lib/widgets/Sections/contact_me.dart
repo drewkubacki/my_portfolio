@@ -1,28 +1,112 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class ContactMe extends StatelessWidget {
+class ContactMe extends StatefulWidget {
   const ContactMe({super.key});
+
+  @override
+  State<ContactMe> createState() => _ContactMeState();
+}
+
+class _ContactMeState extends State<ContactMe> {
+  final emailName = TextEditingController();
+  final emailSender = TextEditingController();
+  final emailSubject = TextEditingController();
+  final emailMessage = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Container(
-        padding: const EdgeInsets.all(0.0),
-        decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(15.0),
-            boxShadow: [
-              BoxShadow(
-                offset: const Offset(5, 15),
-                color: Colors.black.withOpacity(.1),
-                blurRadius: 15,
-              )
-            ]),
-        child: ClipRRect(
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(15.0),
-          child: Image.asset('assets/img/underConstruction.png',
-              fit: BoxFit.cover),
-        ));
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(5, 15),
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 15,
+            )
+          ]),
+      child: Column(
+        children: [
+          buildTextField(title: 'Name', controller: emailName),
+          buildTextField(title: 'Email', controller: emailSender),
+          buildTextField(title: 'Subject', controller: emailSubject),
+          buildTextField(
+              title: 'Message', controller: emailMessage, maxLines: 5),
+          SizedBox(height: 15),
+          ElevatedButton(
+            child: Text('Send Email'),
+            onPressed: () {
+              sendEmail(
+                name: emailName.text,
+                email: emailSender.text,
+                subject: emailSubject.text,
+                message: emailMessage.text,
+              );
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Future sendEmail({
+    required String name,
+    required String email,
+    required String subject,
+    required String message,
+  }) async {
+    final serviceId = 'service_czbk4j9';
+    final templateId = 'template_w3subh8';
+    final userId = 'Vt1WAS8wuxuoYjksX';
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'origin': 'http://localhost',
+      },
+      body: json.encode({
+        'service_id': serviceId,
+        'template_id': templateId,
+        'user_id': userId,
+        'template_params': {
+          'user_name': name,
+          'user_email': email,
+          'user_subject': subject,
+          'user_message': message,
+        }
+      }),
+    );
+  }
+
+  Widget buildTextField({
+    required String title,
+    required TextEditingController controller,
+    int maxLines = 1,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 8),
+        Text(
+          title,
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 4),
+        TextField(
+          controller: controller,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
+      ],
+    );
   }
 }

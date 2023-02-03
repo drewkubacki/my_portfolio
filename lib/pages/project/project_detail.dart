@@ -1,185 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/responsive.dart';
-import 'package:provider/provider.dart';
+import 'package:my_portfolio/pages/project/project_detail_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
-import '../../services/theme_service.dart';
+import '../../responsive.dart';
 
 class ProjectDetail extends StatelessWidget {
   final Project project;
+  const ProjectDetail({super.key, required this.project});
 
-  ProjectDetail({required this.project, Key? key}) : super(key: key);
-
-  Widget desktopBuilder(double width) {
-    return Row(
-      children: [
-        Hero(
-          tag: project.name,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
-            child: Responsive(
-              mobile: Image.asset(
-                project.image,
-                fit: BoxFit.cover,
-              ),
-              tablet: Image.asset(
-                project.image,
-                fit: BoxFit.cover,
-              ),
-              desktop: SizedBox(
-                height: 450,
-                child: Image.asset(
-                  project.image,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: width / 20),
-        Container(
-          width: width / 2.5,
-          child: Text(
-            project.description,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget mobileTabletBuilder() {
-    return Hero(
-      tag: project.name,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15.0),
-        child: Responsive(
-          mobile: Image.asset(
-            project.image,
-            fit: BoxFit.cover,
-          ),
-          tablet: Image.asset(
-            project.image,
-            fit: BoxFit.cover,
-          ),
-          desktop: SizedBox(
-            height: 450,
-            child: Image.asset(
-              project.image,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget desktopBuilder(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final themeService = Provider.of<ThemeService>(context, listen: false);
-
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: _launchURL,
-        child: Image.asset("assets/icon/githubIcon.png"),
-        backgroundColor: Colors.white,
-      ),
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        iconTheme: themeService.darkTheme
-            ? IconThemeData(color: Colors.white)
-            : IconThemeData(color: Colors.black),
-        title: Stack(
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              project.name,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: themeService.darkTheme ? Colors.white : Colors.black),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15.0)),
-                padding: const EdgeInsets.all(5.0),
-                child: Text(
-                  project.year.toString(),
-                  style: const TextStyle(fontSize: 14, color: Colors.white),
+            Hero(
+              tag: project.name,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: SizedBox(
+                  height: 350,
+                  child: Image.asset(
+                    project.image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ],
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: screenSize.width,
-            height: screenSize.height,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
+            Container(
+              width: screenSize.width / 2.2,
+              margin: const EdgeInsets.only(left: 30.0),
+              padding: const EdgeInsets.all(25.0),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).canvasColor,
+                  borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(5, 15),
+                      color: Colors.black.withOpacity(.1),
+                      blurRadius: 15,
+                    )
+                  ]),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 25),
-                  Hero(
-                    tag: project.name,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Responsive(
-                        mobile: Image.asset(
-                          project.image,
-                          fit: BoxFit.cover,
-                        ),
-                        tablet: Image.asset(
-                          project.image,
-                          fit: BoxFit.cover,
-                        ),
-                        desktop: SizedBox(
-                          height: 350,
-                          child: Image.asset(
-                            project.image,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const Text(
-                    "Technologies",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  HorizontalTechView(
-                    techList: project.technologiesUsed ?? [],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    "Description",
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: screenSize.width,
+                  Container(
+                    padding: const EdgeInsets.all(10.0),
                     child: Text(
                       project.description,
                       style: const TextStyle(
@@ -187,9 +53,158 @@ class ProjectDetail extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  HorizontalTechView(techList: project.technologiesUsed ?? []),
                 ],
               ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget tabletBuilder(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Hero(
+          tag: project.name,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: Image.asset(
+              height: 250,
+              project.image,
+              fit: BoxFit.cover,
             ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+              color: Theme.of(context).canvasColor,
+              borderRadius: BorderRadius.circular(15.0),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(5, 15),
+                  color: Colors.black.withOpacity(.1),
+                  blurRadius: 15,
+                )
+              ]),
+          width: screenSize.width / 2.2,
+          padding: const EdgeInsets.all(10.0),
+          margin: const EdgeInsets.only(left: 30.0),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  project.description,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 5.0),
+              Container(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child:
+                      GridTechView(techList: project.technologiesUsed ?? [])),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget mobileBuilder(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    return Column(
+      children: [
+        Hero(
+          tag: project.name,
+          child: Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                offset: const Offset(5, 15),
+                color: Colors.black.withOpacity(.1),
+                blurRadius: 15,
+              )
+            ]),
+            margin:
+                const EdgeInsets.only(top: 0, left: 30, right: 30, bottom: 15),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image.asset(
+                project.image,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        Container(
+          width: screenSize.width,
+          margin:
+              const EdgeInsets.only(top: 15, left: 35, right: 35, bottom: 15),
+          padding: const EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+              color: Theme.of(context).canvasColor,
+              borderRadius: BorderRadius.circular(15.0),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(5, 15),
+                  color: Colors.black.withOpacity(.1),
+                  blurRadius: 15,
+                )
+              ]),
+          child: Column(
+            children: [
+              HorizontalTechView(techList: project.technologiesUsed ?? []),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  project.description,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: _launchURL,
+        backgroundColor: Colors.white,
+        child: Image.asset("assets/icon/githubIcon.png"),
+      ),
+      extendBodyBehindAppBar: true,
+      //Utilized the preferred size widget to allow for a custom app bar widget
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(65),
+          child: ProjectDetailAppBar(project: project)),
+      body: SafeArea(
+        bottom: false,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Responsive(
+                mobile: mobileBuilder(context),
+                tablet: tabletBuilder(context),
+                desktop: desktopBuilder(context),
+              ),
+              const SizedBox(
+                height: 50,
+              )
+            ],
           ),
         ),
       ),
@@ -204,6 +219,39 @@ class ProjectDetail extends StatelessWidget {
   }
 }
 
+//Builds the list of technologies which were used on the specific project for Tablet
+class GridTechView extends StatelessWidget {
+  final List<String> techList;
+  const GridTechView({super.key, required this.techList});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        childAspectRatio: (5 / 2),
+        crossAxisCount: 4,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 5.0,
+      ),
+      itemCount: techList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(5.0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Text(
+            techList[index],
+          ),
+        );
+      },
+    );
+  }
+}
+
 //Builds the list of technologies which were used on the specific project
 class HorizontalTechView extends StatelessWidget {
   final List<String> techList;
@@ -214,7 +262,6 @@ class HorizontalTechView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
-      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -223,17 +270,13 @@ class HorizontalTechView extends StatelessWidget {
           return Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.only(right: 15.0, left: 15.0),
-            margin: const EdgeInsets.only(right: 15.0),
+            margin: const EdgeInsets.only(right: 10.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(15.0),
-              border: Border.all(color: Colors.black),
             ),
             child: Text(
               techList[index],
-              style: TextStyle(
-                color: Colors.black,
-              ),
             ),
           );
         },
