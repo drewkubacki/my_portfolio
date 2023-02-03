@@ -121,7 +121,7 @@ class AboutMe extends StatelessWidget {
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
                             child: Image.asset(
-                              'assets/img/LunaAndMe.jpg',
+                              'assets/img/lunaAndMe.jpg',
                               width: width / 6,
                               fit: BoxFit.fill,
                             )),

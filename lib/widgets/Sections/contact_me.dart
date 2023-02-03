@@ -14,6 +14,7 @@ class _ContactMeState extends State<ContactMe> {
   final emailSender = TextEditingController();
   final emailSubject = TextEditingController();
   final emailMessage = TextEditingController();
+  var _buttonText = "Send Email";
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,11 @@ class _ContactMeState extends State<ContactMe> {
               title: 'Message', controller: emailMessage, maxLines: 5),
           SizedBox(height: 15),
           ElevatedButton(
-            child: Text('Send Email'),
+            child: Text(_buttonText),
+            style: ButtonStyle(
+              overlayColor: getColor(Theme.of(context).primaryColor,
+                  Theme.of(context).highlightColor),
+            ),
             onPressed: () {
               sendEmail(
                 name: emailName.text,
@@ -53,6 +58,18 @@ class _ContactMeState extends State<ContactMe> {
         ],
       ),
     );
+  }
+
+  MaterialStateProperty<Color> getColor(Color color, Color colorPressed) {
+    getColor(Set<MaterialState> states) {
+      if (states.contains(MaterialState.pressed)) {
+        return colorPressed;
+      } else {
+        return color;
+      }
+    }
+
+    return MaterialStateProperty.resolveWith(getColor);
   }
 
   Future sendEmail({
@@ -83,6 +100,15 @@ class _ContactMeState extends State<ContactMe> {
         }
       }),
     );
+    if (response.statusCode == 200) {
+      setState(() {
+        _buttonText = "Sent!";
+      });
+    } else {
+      setState(() {
+        _buttonText = "Failed...";
+      });
+    }
   }
 
   Widget buildTextField({
