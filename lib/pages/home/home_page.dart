@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
       children: [
         GridView.builder(
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 5.0,
@@ -88,7 +89,7 @@ class HomePage extends StatelessWidget {
                     tablet: mobileTabletBuilder(350),
                     desktop: desktopBuilder(),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   const Text(
                     "About Me",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
