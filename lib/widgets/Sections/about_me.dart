@@ -78,7 +78,7 @@ class AboutMe extends StatelessWidget {
                 const SizedBox(height: 30),
                 Container(
                     width: width / 1.2,
-                    height: height / 1.5,
+                    //height: height / 1.5,
                     margin: EdgeInsets.only(top: 20.0),
                     child: ContactMe()),
               ],
