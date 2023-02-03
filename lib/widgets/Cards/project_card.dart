@@ -19,8 +19,8 @@ class ProjectCard extends StatelessWidget {
               builder: (_) => RevisedProjectDetail(project: project))),
       child: Container(
         width: 300,
-        margin: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 25.0),
-        padding: const EdgeInsets.all(15.0),
+        margin: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 20.0),
+        padding: const EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(15.0),
@@ -47,7 +47,6 @@ class ProjectCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(15.0),
-                    //border: Border.all(color: Colors.black),
                   ),
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
@@ -74,7 +73,7 @@ class ProjectCard extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             Text(
               project.description,
