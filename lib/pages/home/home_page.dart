@@ -9,9 +9,7 @@ import '../../widgets/Cards/language_card.dart';
 import '../../widgets/Header/header.dart';
 import '../../widgets/Cards/project_card.dart';
 import 'package:my_portfolio/example/projects.dart';
-import '../../widgets/Sections/Web/about_me.dart';
-import '../../widgets/Sections/Web/education_section.dart';
-import '../../widgets/pdf_container.dart';
+import '../../widgets/Sections/about_me.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

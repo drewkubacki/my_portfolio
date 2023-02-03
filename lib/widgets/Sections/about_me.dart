@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../example/languages.dart';
-import '../../../responsive.dart';
-import '../../Cards/language_card.dart';
+import '../../example/languages.dart';
+import '../../responsive.dart';
+import '../Cards/language_card.dart';
+import 'contact_me.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({Key? key}) : super(key: key);
 
+  //Builds the grid of Languages which is below the text in the about me section
   Widget languageDesktopBuilder() {
     return Column(
       children: [
@@ -25,6 +27,7 @@ class AboutMe extends StatelessWidget {
     );
   }
 
+  //Builds the grid of Languages which is below the text in the about me section
   Widget languageMobileTabletBuilder() {
     return Column(
       children: [
@@ -44,11 +47,12 @@ class AboutMe extends StatelessWidget {
     );
   }
 
+  //Builds the page for both Mobile and Tablet
   Widget mobileTabletBuilder(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
-    return Container(
+    return SizedBox(
       width: width,
       //height: height,
       child: Column(
@@ -73,16 +77,10 @@ class AboutMe extends StatelessWidget {
                 languageMobileTabletBuilder(),
                 const SizedBox(height: 30),
                 Container(
-                  width: width,
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        child: Image.asset('assets/img/headshotImage.jpg'),
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                    ],
-                  ),
-                ),
+                    width: width / 1.5,
+                    height: height / 2.5,
+                    margin: EdgeInsets.only(top: 20.0),
+                    child: ContactMe()),
               ],
             ),
           ),
@@ -91,11 +89,12 @@ class AboutMe extends StatelessWidget {
     );
   }
 
+  //Builds the page for the Desktop
   Widget desktopBuilder(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.width;
 
-    return Container(
+    return SizedBox(
       width: width,
       height: height / 4,
       child: Padding(
@@ -107,7 +106,7 @@ class AboutMe extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: width / 2,
                   child: Column(
                     children: [
@@ -132,27 +131,10 @@ class AboutMe extends StatelessWidget {
               ],
             ),
             Container(
-              width: width / 2.5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 300,
-                    height: 300,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(75.0),
-                      child: Image.asset(
-                        'assets/img/headshotImage.jpg',
-                        //height: 300,
-                        //width: 300,
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                //width: width / 3.5,
+                height: height / 3,
+                margin: EdgeInsets.only(left: 50.0),
+                child: ContactMe()),
           ],
         ),
       ),
@@ -161,12 +143,10 @@ class AboutMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Responsive(
-        mobile: mobileTabletBuilder(context),
-        tablet: mobileTabletBuilder(context),
-        desktop: desktopBuilder(context),
-      ),
+    return Responsive(
+      mobile: mobileTabletBuilder(context),
+      tablet: mobileTabletBuilder(context),
+      desktop: desktopBuilder(context),
     );
   }
 }

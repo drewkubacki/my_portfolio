@@ -144,7 +144,7 @@ class ProjectDetail extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                         desktop: SizedBox(
-                          height: 450,
+                          height: 350,
                           child: Image.asset(
                             project.image,
                             fit: BoxFit.cover,
@@ -179,9 +179,7 @@ class ProjectDetail extends StatelessWidget {
                     height: 10,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width >= 1100
-                        ? screenSize.width / 2
-                        : screenSize.width,
+                    width: screenSize.width,
                     child: Text(
                       project.description,
                       style: const TextStyle(
@@ -198,6 +196,7 @@ class ProjectDetail extends StatelessWidget {
     );
   }
 
+  //Sends the user to the Github repository when the FAB is tapped
   Future<void> _launchURL() async {
     if (!await launchUrl(project.githubUrl)) {
       throw 'Could not launch $project.githubUrl';
@@ -205,6 +204,7 @@ class ProjectDetail extends StatelessWidget {
   }
 }
 
+//Builds the list of technologies which were used on the specific project
 class HorizontalTechView extends StatelessWidget {
   final List<String> techList;
   const HorizontalTechView({required this.techList, Key? key})
