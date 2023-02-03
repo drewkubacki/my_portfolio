@@ -35,8 +35,6 @@ class HomePage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              crossAxisSpacing: 5.0,
-              mainAxisSpacing: 5.0,
             ),
             itemCount: projects.length,
             itemBuilder: ((context, index) {

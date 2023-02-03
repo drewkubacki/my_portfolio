@@ -20,7 +20,7 @@ class ProjectCard extends StatelessWidget {
       child: Container(
         width: 300,
         margin: const EdgeInsets.only(right: 25.0, bottom: 30.0),
-        padding: const EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
+        padding: const EdgeInsets.only(top: 0.0, left: 15.0, right: 15.0),
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(15.0),
@@ -32,7 +32,8 @@ class ProjectCard extends StatelessWidget {
               )
             ]),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
