@@ -13,8 +13,8 @@ class ProjectDetailAppBar extends StatelessWidget {
     final themeService = Provider.of<ThemeService>(context, listen: false);
     return AppBar(
       iconTheme: themeService.darkTheme
-          ? IconThemeData(color: Colors.white)
-          : IconThemeData(color: Colors.black),
+          ? const IconThemeData(color: Colors.white)
+          : const IconThemeData(color: Colors.black),
       title: Stack(
         children: [
           Text(

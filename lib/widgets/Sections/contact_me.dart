@@ -18,8 +18,6 @@ class _ContactMeState extends State<ContactMe> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
@@ -39,9 +37,8 @@ class _ContactMeState extends State<ContactMe> {
           buildTextField(title: 'Subject', controller: emailSubject),
           buildTextField(
               title: 'Message', controller: emailMessage, maxLines: 5),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           ElevatedButton(
-            child: Text(_buttonText),
             style: ButtonStyle(
               overlayColor: getColor(Theme.of(context).primaryColor,
                   Theme.of(context).highlightColor),
@@ -54,6 +51,7 @@ class _ContactMeState extends State<ContactMe> {
                 message: emailMessage.text,
               );
             },
+            child: Text(_buttonText),
           )
         ],
       ),
@@ -78,9 +76,9 @@ class _ContactMeState extends State<ContactMe> {
     required String subject,
     required String message,
   }) async {
-    final serviceId = 'service_czbk4j9';
-    final templateId = 'template_w3subh8';
-    final userId = 'Vt1WAS8wuxuoYjksX';
+    const serviceId = 'service_czbk4j9';
+    const templateId = 'template_w3subh8';
+    const userId = 'Vt1WAS8wuxuoYjksX';
     final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
     final response = await http.post(
       url,
@@ -122,13 +120,13 @@ class _ContactMeState extends State<ContactMe> {
         const SizedBox(height: 8),
         Text(
           title,
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 4),
         TextField(
           controller: controller,
           maxLines: maxLines,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: OutlineInputBorder(),
           ),
         ),

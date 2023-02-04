@@ -9,6 +9,10 @@ List<Project> projects = [
         "NoSQL",
         "Riverpod",
       ],
+      screenshots: [
+        "assets/img/portfolioAboutMe.png",
+        "assets/img/portfolioHome.png",
+      ],
       year: 2023,
       description:
           "This application is currently in progress and will utilize Google's Firebase services for Database storage. In this application you have the ability to randomly select a trick from a list of tricks. \n \nI have plans to continue building on this application to track scores and game wins with your friends! \n \nClick the Github button to check out my code!",

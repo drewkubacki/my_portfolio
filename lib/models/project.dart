@@ -5,6 +5,7 @@ class Project {
   String image;
   Uri githubUrl;
   List<String>? technologiesUsed;
+  List<String>? screenshots;
 
   Project({
     required this.name,
@@ -13,5 +14,6 @@ class Project {
     required this.image,
     required this.githubUrl,
     this.technologiesUsed,
+    this.screenshots,
   });
 }

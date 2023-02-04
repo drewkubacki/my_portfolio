@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/pages/project/project_detail_app_bar.dart';
+import 'package:my_portfolio/pages/project/project_screenshots_display.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
 import '../../responsive.dart';
@@ -163,7 +164,7 @@ class ProjectDetail extends StatelessWidget {
             children: [
               HorizontalTechView(techList: project.technologiesUsed ?? []),
               Container(
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Text(
                   project.description,
                   style: const TextStyle(
@@ -180,6 +181,8 @@ class ProjectDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: _launchURL,
@@ -201,8 +204,15 @@ class ProjectDetail extends StatelessWidget {
                 tablet: tabletBuilder(context),
                 desktop: desktopBuilder(context),
               ),
-              const SizedBox(
-                height: 50,
+              const SizedBox(height: 50),
+              SizedBox(
+                width: screenSize.width / 1.3,
+                height: screenSize.height / 1.5,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: ProjectScreenshotsDisplay(
+                      screenshotList: project.screenshots ?? []),
+                ),
               )
             ],
           ),

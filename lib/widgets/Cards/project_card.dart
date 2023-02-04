@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../models/project.dart';
 import '../../pages/project/project_detail.dart';
-import '../../services/theme_service.dart';
 
 class ProjectCard extends StatelessWidget {
   final Project project;

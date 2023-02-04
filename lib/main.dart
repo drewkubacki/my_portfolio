@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
                 seedColor: Colors.indigo,
               ),
               fontFamily: 'Roboto'),
-          home: HomePage(),
+          home: const HomePage(),
         );
       }),
     );

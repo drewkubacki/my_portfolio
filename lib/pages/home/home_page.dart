@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../example/languages.dart';
-import '../../widgets/Cards/intro_card.dart';
 import '../../services/theme_service.dart';
-import '../../widgets/Cards/language_card.dart';
 import '../../widgets/Header/header.dart';
 import '../../widgets/Cards/project_card.dart';
 import 'package:my_portfolio/example/projects.dart';
@@ -62,7 +59,7 @@ class HomePage extends StatelessWidget {
                 Share.share(
                     "Check out Drew's portfolio https://drews-portfolio-9c845.web.app/#/");
               },
-              icon: Icon(Icons.share),
+              icon: const Icon(Icons.share),
             ),
           ]),
       body: SafeArea(
@@ -92,7 +89,7 @@ class HomePage extends StatelessWidget {
                     "About Me",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
-                  AboutMe(),
+                  const AboutMe(),
                   const SizedBox(height: 30),
                 ],
               ),

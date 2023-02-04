@@ -50,7 +50,6 @@ class AboutMe extends StatelessWidget {
   //Builds the page for both Mobile and Tablet
   Widget mobileTabletBuilder(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: width,
@@ -79,8 +78,8 @@ class AboutMe extends StatelessWidget {
                 Container(
                     width: width / 1.2,
                     //height: height / 1.5,
-                    margin: EdgeInsets.only(top: 20.0),
-                    child: ContactMe()),
+                    margin: const EdgeInsets.only(top: 20.0),
+                    child: const ContactMe()),
               ],
             ),
           ),
@@ -150,9 +149,9 @@ class AboutMe extends StatelessWidget {
             Container(
                 width: width / 3,
                 height: height / 1.5,
-                constraints: BoxConstraints(maxHeight: 475),
-                margin: EdgeInsets.only(left: 35.0),
-                child: ContactMe()),
+                constraints: const BoxConstraints(maxHeight: 475),
+                margin: const EdgeInsets.only(left: 35.0),
+                child: const ContactMe()),
           ],
         ),
       ),
