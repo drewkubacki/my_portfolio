@@ -204,12 +204,13 @@ class ProjectDetail extends StatelessWidget {
                 tablet: tabletBuilder(context),
                 desktop: desktopBuilder(context),
               ),
-              const SizedBox(height: 50),
-              SizedBox(
-                width: screenSize.width / 1.3,
+              const SizedBox(height: 75),
+              Container(
                 height: screenSize.height / 1.5,
+                margin: EdgeInsets.all(0),
+                padding: EdgeInsets.all(0),
                 child: Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   child: ProjectScreenshotsDisplay(
                       screenshotList: project.screenshots ?? []),
                 ),
