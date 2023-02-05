@@ -10,8 +10,8 @@ List<Project> projects = [
         "Riverpod",
       ],
       screenshots: [
-        "assets/img/portfolioAboutMe.png",
-        "assets/img/portfolioHome.png",
+        "assets/img/tricktionaryClearScore.png",
+        "assets/img/tricktionaryHome.png",
       ],
       year: 2023,
       description:
@@ -27,6 +27,12 @@ List<Project> projects = [
         "Stripe",
         "RiverPod",
       ],
+      screenshots: [
+        "assets/img/ecommerceHome.png",
+        "assets/img/ecommerceProduct.png",
+        "assets/img/ecommerceCheckout.png",
+        "assets/img/ecommerceLogin.png",
+      ],
       year: 2022,
       description:
           "Currently this application has utilized Google's Firebase services for both Authentication and Database storage. You have the ability to sign in as either a user or an admin. The admin has the ability to add and remove items. \n \nThis is the ecommerce application I created while enrolled in SideGuide's Flutter couse.",
@@ -39,6 +45,12 @@ List<Project> projects = [
         "NoSQL",
         "Hive",
         "Provider",
+      ],
+      screenshots: [
+        "assets/img/budgetTrackerHome.png",
+        "assets/img/budgetTrackerLight.png",
+        "assets/img/budgetTrackerSetBudget.png",
+        "assets/img/budgetTrackerDelete.png",
       ],
       year: 2022,
       description:
