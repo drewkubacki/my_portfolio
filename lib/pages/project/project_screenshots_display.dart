@@ -9,15 +9,13 @@ class ProjectScreenshotsDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: screenshotList.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Image.asset(screenshotList[index]);
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: screenshotList.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        return Image.asset(screenshotList[index]);
+      },
     );
   }
 }

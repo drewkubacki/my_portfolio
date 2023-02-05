@@ -209,11 +209,8 @@ class ProjectDetail extends StatelessWidget {
                 height: screenSize.height / 1.5,
                 margin: EdgeInsets.all(0),
                 padding: EdgeInsets.all(0),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: ProjectScreenshotsDisplay(
-                      screenshotList: project.screenshots ?? []),
-                ),
+                child: ProjectScreenshotsDisplay(
+                    screenshotList: project.screenshots ?? []),
               )
             ],
           ),
